@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-pearl: #f7f6f2;
+  --color-pearl-dark: #1c1c1f;
+  --color-celeste: #8ecfeb;
+  --color-celeste-dark: #4a90ad;
+  --color-ultramarine: #2a3eb1;
+
+  --radius-app: 1.25rem;
+}
+
+@layer utilities {
+  .glass {
+    @apply backdrop-blur-md bg-white/60 dark:bg-pearl-dark/50
+           border border-white/30 dark:border-white/10
+           rounded-[var(--radius-app)];
+  }
+}
+
+html,
+body,
+#root {
+  min-height: 100svh;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+}
