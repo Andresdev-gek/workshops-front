@@ -1,5 +1,6 @@
 import { EnrolledBadge } from '../atoms/EnrolledBadge'
 import { LowAvailabilityBadge } from '../atoms/LowAvailabilityBadge'
+import { SoldOutBadge } from '../atoms/SoldOutBadge'
 import type { Workshop } from '../../../domain/models/workshop.model'
 
 interface WorkshopCardProps {
@@ -39,11 +40,7 @@ export function WorkshopCard({ workshop, onClick, showEnrolledBadge = true }: Wo
         </div>
 
         <div className="flex flex-wrap items-center gap-2 mt-1">
-          {workshop.isFull && !workshop.isEnrolled && (
-            <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border bg-amber-500/15 text-amber-700 dark:text-amber-400 border-amber-500/30">
-              Agotado
-            </span>
-          )}
+          {workshop.isFull && !workshop.isEnrolled && <SoldOutBadge />}
           {workshop.isLowAvailability && !workshop.isFull && !workshop.isEnrolled && <LowAvailabilityBadge />}
         </div>
 
