@@ -2,6 +2,7 @@ import { Button } from '../../../../../shared/components/atoms/Button'
 import { ErrorBanner } from '../../../../../shared/components/molecules/ErrorBanner'
 import { Modal } from '../../../../../shared/components/organisms/Modal'
 import { EnrolledBadge } from '../atoms/EnrolledBadge'
+import { LowAvailabilityBadge } from '../atoms/LowAvailabilityBadge'
 import type { Workshop } from '../../../domain/models/workshop.model'
 
 interface EnrollModalProps {
@@ -51,11 +52,10 @@ export function EnrollModal({
       }
     >
       <div className="flex flex-col gap-4">
-        {isEnrolled && (
-          <div className="flex justify-end">
-            <EnrolledBadge />
-          </div>
-        )}
+        <div className="flex justify-end gap-2">
+          {isEnrolled && <EnrolledBadge />}
+          {!isEnrolled && workshop.isLowAvailability && !workshop.isFull && <LowAvailabilityBadge />}
+        </div>
 
         <img
           src={workshop.imageUrl}
